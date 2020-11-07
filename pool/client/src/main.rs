@@ -6,7 +6,7 @@ use serum_pool_schema::PoolRequestInner::InitPool;
 use serum_pool_schema::{PoolBasket, PoolRequest, PoolState, PoolTokenInfo, Retbuf};
 use solana_client::rpc_client::RpcClient;
 use solana_client::rpc_config::RpcSendTransactionConfig;
-use solana_sdk::{
+use solana_program::{
     commitment_config::CommitmentConfig,
     instruction::{AccountMeta, Instruction},
     pubkey::Pubkey,
@@ -28,7 +28,7 @@ fn main() -> anyhow::Result<()> {
     let lamports = client
         .get_minimum_balance_for_rent_exemption(POOL_LEN as usize)
         .context("failed to get rent amount")?;
-    let create_account = solana_sdk::system_instruction::create_account(
+    let create_account = solana_program::system_instruction::create_account(
         &gas_payer.pubkey(),
         &pool_key.pubkey(),
         lamports,

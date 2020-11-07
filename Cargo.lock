@@ -550,7 +550,7 @@ dependencies = [
  "sloggers",
  "solana-client",
  "solana-sdk",
- "spl-token",
+ "spl-token 2.0.6",
  "threadpool",
  "tokio 0.2.22",
  "warp",
@@ -2860,7 +2860,7 @@ dependencies = [
  "serde_json",
  "solana-client",
  "solana-sdk",
- "spl-token",
+ "spl-token 2.0.6",
 ]
 
 [[package]]
@@ -2886,7 +2886,7 @@ dependencies = [
  "serum-lockup-client",
  "serum-lockup-test-stake",
  "solana-client-gen",
- "spl-token",
+ "spl-token 2.0.6",
  "thiserror",
 ]
 
@@ -2902,7 +2902,7 @@ dependencies = [
  "serum-lockup-client",
  "serum-node-context",
  "solana-client-gen",
- "spl-token",
+ "spl-token 2.0.6",
 ]
 
 [[package]]
@@ -2914,7 +2914,7 @@ dependencies = [
  "serum-lockup",
  "solana-client",
  "solana-client-gen",
- "spl-token",
+ "spl-token 2.0.6",
  "thiserror",
 ]
 
@@ -2928,7 +2928,7 @@ dependencies = [
  "serum-common",
  "solana-client-gen",
  "solana-sdk",
- "spl-token",
+ "spl-token 2.0.6",
  "thiserror",
 ]
 
@@ -3022,7 +3022,7 @@ dependencies = [
  "serum-node-context",
  "serum-node-logging",
  "solana-client-gen",
- "spl-token",
+ "spl-token 2.0.6",
 ]
 
 [[package]]
@@ -3055,7 +3055,7 @@ dependencies = [
  "solana-client",
  "solana-client-gen",
  "solana-sdk",
- "spl-token",
+ "spl-token 2.0.6",
  "tokio 0.2.22",
 ]
 
@@ -3071,8 +3071,8 @@ dependencies = [
  "hex",
  "serum-pool-schema",
  "slice-of-array",
- "solana-sdk",
- "spl-token",
+ "solana-program",
+ "spl-token 3.0.0",
  "thiserror",
  "zerocopy",
 ]
@@ -3097,7 +3097,7 @@ name = "serum-pool-schema"
 version = "0.1.0"
 dependencies = [
  "borsh",
- "solana-sdk",
+ "solana-program",
 ]
 
 [[package]]
@@ -3105,7 +3105,7 @@ name = "serum-pool-simple"
 version = "0.1.0"
 dependencies = [
  "serum-pool",
- "solana-sdk",
+ "solana-program",
 ]
 
 [[package]]
@@ -3121,7 +3121,7 @@ dependencies = [
  "serum-common",
  "serum-common-tests",
  "solana-client-gen",
- "spl-token",
+ "spl-token 2.0.6",
  "thiserror",
 ]
 
@@ -3141,7 +3141,7 @@ dependencies = [
  "solana-client",
  "solana-client-gen",
  "solana-sdk",
- "spl-token",
+ "spl-token 2.0.6",
  "tokio 0.2.22",
 ]
 
@@ -3160,7 +3160,7 @@ dependencies = [
  "safe-transmute",
  "serde",
  "solana-sdk",
- "spl-token",
+ "spl-token 2.0.6",
  "static_assertions",
  "thiserror",
  "without-alloc",
@@ -3411,7 +3411,7 @@ dependencies = [
  "solana-sdk",
  "solana-stake-program",
  "solana-vote-program",
- "spl-token",
+ "spl-token 2.0.6",
  "thiserror",
 ]
 
@@ -3528,10 +3528,43 @@ dependencies = [
 ]
 
 [[package]]
-name = "solana-logger"
-version = "1.3.15"
+name = "solana-frozen-abi"
+version = "1.4.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d2a5735685cdfabd2f9e78590d078ffdd8db89e90f2f22136ad37cb3d4c89dfc"
+checksum = "361e984c8afd2bf8a20ef0bdbfffb5ff7f94d74bc57e04c8818a87a055fd340b"
+dependencies = [
+ "bs58",
+ "bv",
+ "generic-array 0.14.4",
+ "log",
+ "memmap",
+ "rustc_version",
+ "serde",
+ "serde_derive",
+ "sha2",
+ "solana-frozen-abi-macro",
+ "solana-logger",
+ "thiserror",
+]
+
+[[package]]
+name = "solana-frozen-abi-macro"
+version = "1.4.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7b50d36358b6206ec5eece48048567a59273ce1c478e0d77bd14b9fde9bc7b66"
+dependencies = [
+ "lazy_static",
+ "proc-macro2 1.0.24",
+ "quote 1.0.7",
+ "rustc_version",
+ "syn 1.0.42",
+]
+
+[[package]]
+name = "solana-logger"
+version = "1.4.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2d8d109510b0fcb6bca2a303f1e1c8ca3d9c58c1d18b95a620ee7fa8ee256b5f"
 dependencies = [
  "env_logger",
  "lazy_static",
@@ -3586,6 +3619,36 @@ dependencies = [
  "tokio 0.1.22",
  "tokio-codec",
  "url 2.1.1",
+]
+
+[[package]]
+name = "solana-program"
+version = "1.4.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b2781e0c9fbf82b5ab2093820048e926401e5473c31ec35eea993825bd9ca537"
+dependencies = [
+ "bincode",
+ "bs58",
+ "bv",
+ "curve25519-dalek",
+ "hex",
+ "itertools",
+ "lazy_static",
+ "log",
+ "num-derive",
+ "num-traits",
+ "rand 0.7.3",
+ "rustc_version",
+ "rustversion",
+ "serde",
+ "serde_bytes",
+ "serde_derive",
+ "sha2",
+ "solana-frozen-abi",
+ "solana-frozen-abi-macro",
+ "solana-logger",
+ "solana-sdk-macro",
+ "thiserror",
 ]
 
 [[package]]
@@ -3710,9 +3773,9 @@ dependencies = [
 
 [[package]]
 name = "solana-sdk-macro"
-version = "1.3.15"
+version = "1.4.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "57463935ec0091ef806eb58272f8a6abd1bb23df6c13419bfd8e3f03d27ef079"
+checksum = "4e581ace8ccecf2b5111362ff22d9085a144a11bbc0305d6d4a988b73cecb9b7"
 dependencies = [
  "bs58",
  "proc-macro2 1.0.24",
@@ -3789,7 +3852,7 @@ dependencies = [
  "solana-stake-program",
  "solana-vote-program",
  "spl-memo",
- "spl-token",
+ "spl-token 2.0.6",
  "thiserror",
 ]
 
@@ -3856,6 +3919,20 @@ dependencies = [
  "num_enum",
  "remove_dir_all",
  "solana-sdk",
+ "thiserror",
+]
+
+[[package]]
+name = "spl-token"
+version = "3.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2f77fa0b41cbc82d1d7c8f2d914b49e9a1a7b6e32af952d03383fb989c42bc89"
+dependencies = [
+ "arrayref",
+ "num-derive",
+ "num-traits",
+ "num_enum",
+ "solana-program",
  "thiserror",
 ]
 

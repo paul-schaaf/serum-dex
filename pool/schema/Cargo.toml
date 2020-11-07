@@ -4,13 +4,9 @@ version = "0.1.0"
 authors = ["Sebastian Conybeare <sebastian@projectserum.com>"]
 edition = "2018"
 
-[features]
-program = ["solana-sdk/program"]
-default = ["solana-sdk/default"]
-
 [dependencies]
 borsh = "0.7.1"
-solana-sdk = { version = "1.3.9", default-features = false }
+solana-program = "1.4.4"
 
 [[bin]]
 name = "print-schema"

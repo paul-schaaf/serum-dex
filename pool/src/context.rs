@@ -1,13 +1,13 @@
 use std::convert::TryInto;
 
-use solana_sdk;
-use solana_sdk::account_info::next_account_info;
-use solana_sdk::instruction::{AccountMeta, Instruction};
-use solana_sdk::program;
-use solana_sdk::program_option::COption;
-use solana_sdk::program_pack::Pack;
-use solana_sdk::sysvar::{rent, Sysvar};
-use solana_sdk::{account_info::AccountInfo, info, program_error::ProgramError, pubkey::Pubkey};
+use solana_program;
+use solana_program::account_info::next_account_info;
+use solana_program::instruction::{AccountMeta, Instruction};
+use solana_program::program;
+use solana_program::program_option::COption;
+use solana_program::program_pack::Pack;
+use solana_program::sysvar::{rent, Sysvar};
+use solana_program::{account_info::AccountInfo, info, program_error::ProgramError, pubkey::Pubkey};
 use spl_token::state::{Account as TokenAccount, Mint};
 
 use serum_pool_schema::{Address, Basket, PoolRequestInner, PoolState};

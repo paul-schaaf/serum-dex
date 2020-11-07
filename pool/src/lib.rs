@@ -5,9 +5,9 @@ use std::ops::DerefMut;
 
 use arrayref::array_ref;
 use borsh::{BorshDeserialize, BorshSerialize};
-pub use solana_sdk;
-use solana_sdk::program_pack::Pack;
-use solana_sdk::{
+pub use solana_program;
+use solana_program::program_pack::Pack;
+use solana_program::{
     account_info::AccountInfo, entrypoint::ProgramResult, info, program_error::ProgramError,
     pubkey::Pubkey,
 };
@@ -27,12 +27,12 @@ type PoolResult<T> = Result<T, ProgramError>;
 #[macro_export]
 macro_rules! declare_pool_entrypoint {
     ($PoolImpl:ty) => {
-        solana_sdk::entrypoint!(entry);
+        solana_program::entrypoint!(entry);
         fn entry(
-            program_id: &$crate::solana_sdk::pubkey::Pubkey,
-            accounts: &[$crate::solana_sdk::account_info::AccountInfo],
+            program_id: &$crate::solana_program::pubkey::Pubkey,
+            accounts: &[$crate::solana_program::account_info::AccountInfo],
             instruction_data: &[u8],
-        ) -> solana_sdk::entrypoint::ProgramResult {
+        ) -> solana_program::entrypoint::ProgramResult {
             $crate::pool_entrypoint::<$PoolImpl>(program_id, accounts, instruction_data)
         }
     };
